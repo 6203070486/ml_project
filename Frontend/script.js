@@ -102,7 +102,7 @@ async function predict() {
   loader.classList.add('active');
 
   try {
-    const res = await fetch('http://127.0.0.1:5000/predict', {
+    const res = await fetch('https://ml-project-177j.onrender.com/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ temperature, humidity, soil_moisture: soilMoisture, rainfall })
