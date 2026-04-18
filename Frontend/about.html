@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — AquaAI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i><span>AquaAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="darkToggle" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <!-- About Hero -->
+    <div class="about-hero">
+      <div class="hero-badge" style="display:inline-flex;"><i class="fa-solid fa-circle-info"></i> About the Project</div>
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin:16px 0 20px;">
+        Built for <span class="gradient-text">Smarter Farming</span>
+      </h1>
+      <p style="color:var(--text-muted);max-width:650px;margin:0 auto;line-height:1.8;font-size:1rem;">
+        AquaAI is a student project that combines Machine Learning with a modern web interface to predict
+        whether a crop field needs irrigation — helping farmers conserve water and improve yield efficiency.
+      </p>
+    </div>
+
+    <!-- Project Description -->
+    <section class="section" style="padding-top:20px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <div class="glass-card" style="padding:40px;margin-bottom:32px;" class="fade-in">
+          <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:16px;"><i class="fa-solid fa-lightbulb" style="color:var(--primary);margin-right:10px;"></i>How It Works</h2>
+          <p style="color:var(--text-muted);line-height:1.8;margin-bottom:16px;">
+            The system takes four environmental inputs — <strong style="color:var(--text);">Temperature</strong>,
+            <strong style="color:var(--text);">Humidity</strong>, <strong style="color:var(--text);">Soil Moisture</strong>,
+            and <strong style="color:var(--text);">Rainfall</strong> — and passes them to a trained
+            <strong style="color:var(--primary);">Random Forest classifier</strong> via a Flask REST API.
+          </p>
+          <p style="color:var(--text-muted);line-height:1.8;">
+            The model returns a binary prediction: <em>Irrigation Needed</em> or <em>No Irrigation Needed</em>,
+            along with a confidence score visualized as a doughnut chart. This helps farmers make data-driven
+            decisions instead of relying on guesswork.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="section" style="padding-top:0;">
+      <h2 class="section-title">Technology Stack</h2>
+      <p class="section-sub">The tools and frameworks powering AquaAI</p>
+      <div class="tech-grid">
+        <div class="tech-badge"><i class="fa-brands fa-python"></i> Python 3</div>
+        <div class="tech-badge"><i class="fa-solid fa-flask" style="color:var(--primary)"></i> Flask</div>
+        <div class="tech-badge"><i class="fa-solid fa-tree"></i> Random Forest (scikit-learn)</div>
+        <div class="tech-badge"><i class="fa-brands fa-html5"></i> HTML5</div>
+        <div class="tech-badge"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+        <div class="tech-badge"><i class="fa-brands fa-js"></i> JavaScript</div>
+        <div class="tech-badge"><i class="fa-solid fa-chart-pie"></i> Chart.js</div>
+        <div class="tech-badge"><i class="fa-solid fa-cube"></i> Pickle (Model Serialization)</div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="padding-top:0;">
+      <h2 class="section-title">Project Features</h2>
+      <p class="section-sub">What makes this system stand out</p>
+      <div class="cards-grid">
+        <div class="glass-card feature-card fade-in">
+          <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3>ML-Powered Core</h3>
+          <p>Random Forest classifier trained on agricultural datasets with ~95% accuracy on test data.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-1">
+          <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+          <h3>REST API Backend</h3>
+          <p>Flask backend exposes a /predict endpoint that accepts JSON input and returns predictions instantly.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-2">
+          <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Responsive UI</h3>
+          <p>Fully responsive design that works seamlessly on mobile, tablet, and desktop screens.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-3">
+          <div class="card-icon"><i class="fa-solid fa-moon"></i></div>
+          <h3>Dark / Light Mode</h3>
+          <p>Toggle between dark and light themes with smooth transitions for comfortable viewing.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-1">
+          <div class="card-icon"><i class="fa-solid fa-chart-donut"></i></div>
+          <h3>Confidence Visualization</h3>
+          <p>Chart.js doughnut chart displays prediction confidence, making results easy to interpret.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-2">
+          <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Eco-Friendly Impact</h3>
+          <p>Helps reduce water waste by up to 40%, contributing to sustainable and efficient farming.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align:center;padding:20px 5% 80px;">
+      <div class="glass-card" style="max-width:600px;margin:0 auto;padding:48px 40px;">
+        <i class="fa-solid fa-seedling" style="font-size:3rem;color:var(--primary);margin-bottom:20px;display:block;"></i>
+        <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:12px;">Ready to Try It?</h2>
+        <p style="color:var(--text-muted);margin-bottom:28px;line-height:1.7;">Head to the dashboard and run your first irrigation prediction in seconds.</p>
+        <a href="dashboard.html" class="btn btn-primary"><i class="fa-solid fa-chart-line"></i> Open Dashboard</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i> <span>AquaAI</span></a>
+        <p>An AI-powered smart irrigation prediction system built with Machine Learning and modern web technologies.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Stack</h4>
+        <ul>
+          <li><a href="#">Python / Flask</a></li>
+          <li><a href="#">Random Forest</a></li>
+          <li><a href="#">Chart.js</a></li>
+          <li><a href="#">HTML / CSS / JS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AquaAI. Built for Smart Agriculture.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Irrigation System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">
+      <i class="fa-solid fa-seedling"></i>
+      <span>AquaAI</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="darkToggle" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="page">
+    <section class="hero">
+      <div class="hero-badge fade-in"><i class="fa-solid fa-bolt"></i> AI-Powered Agriculture</div>
+      <h1 class="fade-in fade-in-delay-1">
+        Smart <span class="gradient-text">Irrigation</span><br/>Prediction System
+      </h1>
+      <p class="fade-in fade-in-delay-2">
+        Harness the power of Machine Learning to predict irrigation needs in real-time.
+        Save water, boost yield, and farm smarter with AI-driven insights.
+      </p>
+      <div class="hero-btns fade-in fade-in-delay-3">
+        <a href="dashboard.html" class="btn btn-primary"><i class="fa-solid fa-chart-line"></i> Go to Dashboard</a>
+        <a href="about.html" class="btn btn-outline"><i class="fa-solid fa-circle-info"></i> Learn More</a>
+      </div>
+      <div class="hero-stats fade-in fade-in-delay-4">
+        <div class="stat"><div class="stat-num">95%</div><div class="stat-label">Accuracy</div></div>
+        <div class="stat"><div class="stat-num">40%</div><div class="stat-label">Water Saved</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Parameters</div></div>
+        <div class="stat"><div class="stat-num">RF</div><div class="stat-label">Algorithm</div></div>
+      </div>
+    </section>
+
+    <!-- Features Preview -->
+    <section class="section">
+      <p class="hero-badge" style="margin:0 auto 16px;display:table;"><i class="fa-solid fa-star"></i> Key Features</p>
+      <h2 class="section-title">Why AquaAI?</h2>
+      <p class="section-sub">Built with cutting-edge ML and a clean, intuitive interface</p>
+      <div class="cards-grid">
+        <div class="glass-card feature-card fade-in">
+          <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>AI Predictions</h3>
+          <p>Random Forest model trained on real agricultural data for highly accurate irrigation decisions.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-1">
+          <div class="card-icon"><i class="fa-solid fa-droplet"></i></div>
+          <h3>Water Conservation</h3>
+          <p>Reduce water waste by up to 40% by irrigating only when truly needed based on soil and weather data.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-2">
+          <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <h3>Real-Time Analysis</h3>
+          <p>Instant predictions using live sensor inputs — temperature, humidity, soil moisture, and rainfall.</p>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-3">
+          <div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Visual Insights</h3>
+          <p>Interactive confidence charts powered by Chart.js to visualize prediction certainty at a glance.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i> <span>AquaAI</span></a>
+        <p>An AI-powered smart irrigation prediction system built with Machine Learning and modern web technologies.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Stack</h4>
+        <ul>
+          <li><a href="#">Python / Flask</a></li>
+          <li><a href="#">Random Forest</a></li>
+          <li><a href="#">Chart.js</a></li>
+          <li><a href="#">HTML , CSS ,JS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AquaAI. Built for Smart Agriculture.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

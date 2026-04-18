@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — AquaAI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i><span>AquaAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="darkToggle" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div style="text-align:center;padding:40px 5% 0;" class="fade-in">
+      <div class="hero-badge" style="display:inline-flex;"><i class="fa-solid fa-envelope"></i> Get In Touch</div>
+      <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-top:12px;">
+        Contact <span class="gradient-text">Us</span>
+      </h1>
+      <p style="color:var(--text-muted);margin-top:8px;">Have questions or feedback? We'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="glass-card contact-info fade-in">
+        <h2>Let's Connect</h2>
+        <p>Whether you have a question about the project, want to collaborate, or just want to say hi — drop us a message!</p>
+
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <div style="font-weight:600;font-size:0.9rem;">Email</div>
+            <div style="color:var(--text-muted);font-size:0.85rem;">aquaai@example.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <div style="font-weight:600;font-size:0.9rem;">Location</div>
+            <div style="color:var(--text-muted);font-size:0.85rem;">India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-code-branch"></i>
+          <div>
+            <div style="font-weight:600;font-size:0.9rem;">Project Type</div>
+            <div style="color:var(--text-muted);font-size:0.85rem;">Student ML Project</div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" class="social-link" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="glass-card contact-form fade-in fade-in-delay-1">
+        <div class="panel-title"><i class="fa-solid fa-paper-plane"></i> Send a Message</div>
+
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <i class="fa-solid fa-circle-check"></i>
+          Message sent successfully! We'll get back to you soon.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i> <span>AquaAI</span></a>
+        <p>An AI-powered smart irrigation prediction system built with Machine Learning and modern web technologies.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Stack</h4>
+        <ul>
+          <li><a href="#">Python / Flask</a></li>
+          <li><a href="#">Random Forest</a></li>
+          <li><a href="#">Chart.js</a></li>
+          <li><a href="#">HTML / CSS / JS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AquaAI. Built for Smart Agriculture.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — AquaAI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i><span>AquaAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="darkToggle" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div style="text-align:center;padding:40px 5% 0;" class="fade-in">
+      <div class="hero-badge" style="display:inline-flex;"><i class="fa-solid fa-sliders"></i> Prediction Engine</div>
+      <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-top:12px;">Irrigation <span class="gradient-text">Dashboard</span></h1>
+      <p style="color:var(--text-muted);margin-top:8px;">Adjust the parameters below and click Predict</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Input Panel -->
+      <div class="glass-card input-panel fade-in" style="position:relative;">
+        <div class="loader-overlay" id="loader">
+          <div class="spinner"></div>
+          <p style="color:var(--text-muted);font-size:0.9rem;">Analyzing data...</p>
+        </div>
+
+        <div class="panel-title"><i class="fa-solid fa-sliders"></i> Input Parameters</div>
+
+        <div class="input-group">
+          <label>Temperature (°C) <span id="tempVal">25</span></label>
+          <input type="range" id="temperature" min="0" max="50" value="25" step="0.5" oninput="updateVal('tempVal', this.value, '°C')" />
+        </div>
+        <div class="input-group">
+          <label>Humidity (%) <span id="humVal">60</span></label>
+          <input type="range" id="humidity" min="0" max="100" value="60" step="1" oninput="updateVal('humVal', this.value, '%')" />
+        </div>
+        <div class="input-group">
+          <label>Soil Moisture (%) <span id="soilVal">40</span></label>
+          <input type="range" id="soilMoisture" min="0" max="100" value="40" step="1" oninput="updateVal('soilVal', this.value, '%')" />
+        </div>
+        <div class="input-group">
+          <label>Rainfall (mm) <span id="rainVal">5</span></label>
+          <input type="range" id="rainfall" min="0" max="200" value="5" step="1" oninput="updateVal('rainVal', this.value, 'mm')" />
+        </div>
+
+        <button class="btn btn-primary predict-btn" onclick="predict()">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Predict Irrigation Need
+        </button>
+      </div>
+
+      <!-- Result Panel -->
+      <div class="glass-card result-panel fade-in fade-in-delay-1">
+        <div class="panel-title"><i class="fa-solid fa-chart-bar"></i> Prediction Result</div>
+
+        <div class="result-placeholder" id="resultPlaceholder">
+          <i class="fa-solid fa-seedling"></i>
+          <p>Set parameters and click <strong>Predict</strong> to see results</p>
+        </div>
+
+        <div class="result-display" id="resultDisplay">
+          <div class="result-icon-wrap" id="resultIcon">
+            <i id="resultIconI" class="fa-solid fa-droplet"></i>
+          </div>
+          <div class="result-label" id="resultLabel">—</div>
+          <div class="result-sub" id="resultSub">—</div>
+          <div class="chart-wrap">
+            <canvas id="confidenceChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parameter Summary Cards -->
+    <div style="max-width:1100px;margin:0 auto;padding:0 5% 60px;">
+      <div class="cards-grid" id="summaryCards" style="grid-template-columns:repeat(4,1fr);">
+        <div class="glass-card feature-card fade-in" style="padding:20px;text-align:center;">
+          <div class="card-icon" style="margin:0 auto 12px;"><i class="fa-solid fa-temperature-half"></i></div>
+          <div style="font-size:1.6rem;font-weight:800;color:var(--primary);" id="s-temp">25°C</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Temperature</div>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-1" style="padding:20px;text-align:center;">
+          <div class="card-icon" style="margin:0 auto 12px;background:linear-gradient(135deg,#3b82f6,#06b6d4);"><i class="fa-solid fa-droplet"></i></div>
+          <div style="font-size:1.6rem;font-weight:800;color:#3b82f6;" id="s-hum">60%</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Humidity</div>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-2" style="padding:20px;text-align:center;">
+          <div class="card-icon" style="margin:0 auto 12px;background:linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fa-solid fa-layer-group"></i></div>
+          <div style="font-size:1.6rem;font-weight:800;color:#f59e0b;" id="s-soil">40%</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Soil Moisture</div>
+        </div>
+        <div class="glass-card feature-card fade-in fade-in-delay-3" style="padding:20px;text-align:center;">
+          <div class="card-icon" style="margin:0 auto 12px;background:linear-gradient(135deg,#8b5cf6,#ec4899);"><i class="fa-solid fa-cloud-rain"></i></div>
+          <div style="font-size:1.6rem;font-weight:800;color:#8b5cf6;" id="s-rain">5mm</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Rainfall</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><i class="fa-solid fa-seedling"></i> <span>AquaAI</span></a>
+        <p>An AI-powered smart irrigation prediction system built with Machine Learning and modern web technologies.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Stack</h4>
+        <ul>
+          <li><a href="#">Python / Flask</a></li>
+          <li><a href="#">Random Forest</a></li>
+          <li><a href="#">Chart.js</a></li>
+          <li><a href="#">HTML / CSS / JS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AquaAI. Built for Smart Agriculture.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
